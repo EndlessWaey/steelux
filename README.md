@@ -8,7 +8,7 @@ I'd be more than happy to make this a community project, so feel free to modify 
 
 # Usage
 
-Clone the repo and activate the virtual environment. It contains the "pyusb" module that is necessary to communitcate with USB Devices. This also assumes that "libusb" is installed on your system. In addition, you will also require write-access to your mouse. I'm planning to make this a feature in the software going into the future, but for now you will have to manually "own" the mouse through shell commands. I've crafted the following one-liner which works rather decently:
+Clone the repo and create a virtual environment with pyusb installed. Also install "libusb" on your distro, which is what pyusb uses in the background. In addition, you will also require write-access to your mouse. I'm planning to make this a feature in the software going into the future, but for now you will have to manually "own" the mouse through shell commands. I've crafted the following one-liner which works rather decently:
 
 ```sh
 sudo chown root:$USER $(lsusb | grep "1038:1858" | awk '{print "/dev/bus/usb/"$2"/"$4}' | sed 's/://g')
@@ -41,3 +41,4 @@ The code could also use some refactoring here and there. My primary concern was 
 
 Add more functionalities. Rather obvious, but wouldn't it be nice to also query the battery status? I for one would love that, especially since the battery live on my particular model isn't anything to write home about to speak quite frankly. Afterwards, I would try to add options for changing the keybindings and lighting effects.
 
+Oh, and of course I also want to document all the steps I took to create this project, maybe even with a video.

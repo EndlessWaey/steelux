@@ -1,7 +1,6 @@
 import steelseries.models
 import argparse
 
-
 def eval_dpi(dpi: list):
     if len(dpi) > 5:
         print("ERROR: More than five DPI levels were provided.\n-> Please only specify up to 5 DPI levels.")
