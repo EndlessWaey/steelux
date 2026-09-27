@@ -1,10 +1,10 @@
-# Change the DPI levels on your Steel Series Aerox 9 WL! (On Linux)
+# Steelux
 
-That's pretty much it. This program will enable you to _finally_ change the DPI levels on your SteelSeries Aerox 9 WL gaming mouse. I created this primarily for myself, but thought that other people might also find this useful/interesting.
+A software for configuring SteelSeries mice on Linux. 
 
-Please note that I'm not really a programmer. I dabble into programming here and there, but I'm nowhere near being adept at it, so don't expect high quality standards in code. Since I wanted this to be a learning experience, the code was created without the help of AI.
+**DISCLAIMER:** This project is still in _very_ early development. However, I felt like there's no reason in keeping it all to myself until I am happy with it. There's always something to gain in early sharing! 
 
-I'd be more than happy to make this a community project, so feel free to modify the code and propose changes.
+Got a SteelSeries Mouse but can't change a damn setting because you don't want to use up storage for MicroSlop Windows? I've been in a similar situation and so I started creating this piece of software, primarily to be able to change the five DPI levels on my SteelSeries mouse. Eventhough this feature is already implemented, I'm planning to do more yet: Lighting, button re-mapping, polling rate... you name it. Currently, only the SteelSeries Aerox 9 WL is supported, because that's the mouse I own myself. Supporting more devices will be a major community effort for which I will have to rely on help from fellow SteelSeries users. More on how you can support below! 
 
 # Usage
 
@@ -33,11 +33,21 @@ This will set 4 DPI Levels:
 
 > I've only tested direct multiples of hundred up until now and tried to ensure that you can't in fact set anything that _is not a multiple of 100_. But again, I'm not a good programmer.
 
+# FAQ
+
+**Why does the code suck so much?**
+
+The simple and truthful answer is that I'm not really programmer. I work in IT amd dabble into scripting here and there, but am more versed in maintaining infrastructure. This project is a learning experience for me, so I'm still learning! Also: You may always provide feedback or make your own modifications! I would appreciate it a lot.
+
+**"I wish my mouse was also supported"**
+
+
+
 # Future plans
 
 First and foremost, I want to make the program a bit more "silent" as it currently dumps A LOT of text to your terminal when executing. For debugging puposes, I will add an option for verbosity.
 
-The code could also use some refactoring here and there. My primary concern was to get this runnning, not to make it particularly readable. This needs some changes, I am aware.
+The code could also use some refactoring here and there. My priary concern was to get this runnning, not to make it particularly readable. This needs some changes, I am aware.
 
 Add more functionalities. Rather obvious, but wouldn't it be nice to also query the battery status? I for one would love that, especially since the battery live on my particular model isn't anything to write home about to speak quite frankly. Afterwards, I would try to add options for changing the keybindings and lighting effects.
 
