@@ -1,9 +1,25 @@
 import time
 import usb.core
 import usb.util
+from dataclasses import dataclass
+from typing import Optional
 
-class aerox9wl(object):
+@dataclass(frozen=True)
+class USBDeviceConfig:
+    name: str
+    vendor_id: int
+    product_id: int
 
+SUPPORTED_DEVICES = [
+    USBDeviceConfig(
+        name="SteelSeries Aerox 9 Wireless",
+        vendor_id=0x1038,
+        product_id=0x1858,
+    )
+]
+
+class Aerox9WL(object):
+    '''Specific Object for Aerox 9 WL. Will probably be obsoleted in the future.'''
     def __init__(self):
         self.dev = None
         self.PID = 0x1858
@@ -140,4 +156,8 @@ class aerox9wl(object):
         finally:
             self._release_interface(interface=self.DPI_INTERFACE)
             print("Released DPI Interface %d" % self.DPI_INTERFACE)
-            
+
+class SteelSeriesMouse(object):
+    '''Generic SteelSeries Mouse object'''
+    
+    pass
