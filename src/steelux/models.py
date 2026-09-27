@@ -9,12 +9,14 @@ class USBDeviceConfig:
     name: str
     vendor_id: int
     product_id: int
+    dpi_interface: int
 
 SUPPORTED_DEVICES = [
     USBDeviceConfig(
         name="SteelSeries Aerox 9 Wireless",
         vendor_id=0x1038,
         product_id=0x1858,
+        dpi_interface=3
     )
 ]
 
@@ -159,5 +161,11 @@ class Aerox9WL(object):
 
 class SteelSeriesMouse(object):
     '''Generic SteelSeries Mouse object'''
-    
-    pass
+    def __init__(self, config: USBDeviceConfig, handle: usb.core.Device):
+        self.mouse_handle = handle
+        self.vendor_id = config.vendor_id
+        self.product_id = config.product_id
+        self.name = config.name
+        self.dpi_interface= config.dpi_interface
+
+        print(f"Created an instance object for {self.name}")

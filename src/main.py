@@ -27,16 +27,16 @@ def parse_args():
 
 def main():
     
-    # Find a mouse connected to the system.
-    connected_mouse = steelux.utils.find_connected_mouse()
+    # Find a mouse connected to the system and retrieve handle & config
+    mouse_handle, mouse_config  = steelux.utils.find_connected_mouse()
 
     # No supported mouse found. Exit.
-    if connected_mouse is None:
+    if mouse_handle is None and mouse_config is None:
         exit(1)
 
-    mouse = steelux.models.Aerox9WL()
-    mouse.connect()
+    mouse = steelux.models.SteelSeriesMouse(config=mouse_config, handle=mouse_handle)
     
+    exit(0)
     args = parse_args()
 
     if args.dpi:
@@ -48,8 +48,7 @@ def main():
             exit(1)
     
     # Close mouse in any event
-    mouse.close()
+    # mouse.close()
     
 if __name__ == "__main__":
     main()
-    
