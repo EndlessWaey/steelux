@@ -1,5 +1,5 @@
 import usb.core
-from steelux.models import SUPPORTED_DEVICES, USBDeviceConfig
+from steelux.mice import SUPPORTED_DEVICES, USBDeviceConfig
 
 def find_connected_mouse() -> tuple[Optional[usb.core.Device], Optional[USBDeviceConfig]]: 
     '''Finds supported SteelSeries mice connected to the system'''
