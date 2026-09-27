@@ -1,8 +1,10 @@
 # SteeLux
 
+> **DISCLAIMER:** This project is neither affiliated with, nor endorsed by SteelSeries. I've created this project as an alternative to the native SteelSeries Software that is offered for Windows.
+
 A software for configuring SteelSeries mice on Linux. 
 
-**DISCLAIMER:** This project is still in _very early development_. However, I felt like there's no reason in keeping it all to myself until I am happy with it. There's always something to gain by getting feedback and aid early on I believe.
+**EARLY DEVELOPMENT NOTICE:** This project is still in _very early development_. However, I felt like there's no reason in keeping it all to myself until I am happy with it. There's always something to gain by getting feedback and aid early on I believe.
 
 Got a SteelSeries Mouse but can't change a damn setting because you don't want to use up storage for MicroSlop Windows? I've been in a similar situation and so I started creating this piece of software, primarily to be able to change the five DPI levels on my SteelSeries mouse. Eventhough this feature is already implemented, I'm planning to do more yet: Lighting, button re-mapping, polling rate... you name it. Currently, only the SteelSeries Aerox 9 WL is supported, because that's the mouse I own myself. Supporting more devices will be a major community effort for which I will have to rely on help from fellow SteelSeries users. See the FAQ for how you may support the project!
 
