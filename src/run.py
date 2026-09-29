@@ -1,17 +1,6 @@
-import steelux.utils, steelux.mice
+import steelux.mice
+import steelux.utils
 import argparse
-
-def eval_dpi(dpi: list):
-    '''Evaluate the provided DPI settings. TODO: Move this to utils.'''
-    if len(dpi) > 5:
-        print("ERROR: More than five DPI levels were provided.\n-> Please only specify up to 5 DPI levels.")
-        return 1
-    for level in dpi:
-        if level % 100 != 0:
-            print("ERROR: %d is not a valid DPI level\n-> HINT: DPI levels must be between 100 and 4600." % level)
-            return 1
-    
-    return 0
 
 def parse_args():
     '''Parse the CLI Arguments and options passed with SteeLux'''
@@ -36,7 +25,11 @@ def main():
         exit(1)
 
     # TODO: Should everything be handled inside of the object, or initiated from main?
-    mouse = steelux.mice.SteelSeriesMouse(config=mouse_config, handle=mouse_handle, cli_args=args)
+    mouse = steelux.mice.SteelSeriesMouse(
+        config=mouse_config,
+        handle=mouse_handle,
+        cli_args=args
+    )
 
     # Enter "main loop" (It's not a loop, ik...)
     if args.dpi:
