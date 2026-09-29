@@ -1,5 +1,4 @@
-import steelux.models
-import steelux.utils
+import steelux.utils, steelux.mice
 import argparse
 
 def eval_dpi(dpi: list):
@@ -27,29 +26,24 @@ def parse_args():
 
 def main():
     
-    # Find a mouse connected to the system.
-    connected_mouse = steelux.utils.find_connected_mouse()
+    args = parse_args()
+    
+    # Find a mouse connected to the system and retrieve handle & config
+    mouse_handle, mouse_config  = steelux.utils.find_connected_mouse()
 
     # No supported mouse found. Exit.
-    if connected_mouse is None:
+    if mouse_handle is None and mouse_config is None:
         exit(1)
 
-    mouse = steelux.models.Aerox9WL()
-    mouse.connect()
-    
-    args = parse_args()
+    # TODO: Should everything be handled inside of the object, or initiated from main?
+    mouse = steelux.mice.SteelSeriesMouse(config=mouse_config, handle=mouse_handle, cli_args=args)
 
+    # Enter "main loop" (It's not a loop, ik...)
     if args.dpi:
-        if eval_dpi(args.dpi) == 0:
-            print("DPI settings are valid")
-            mouse.set_dpi(dpi_settings=args.dpi)
-        else:
-            print("There were problems evaluating the DPI settings.")
-            exit(1)
+        mouse.set_dpi(dpi_list=args.dpi)
     
     # Close mouse in any event
     mouse.close()
     
 if __name__ == "__main__":
     main()
-    
