@@ -14,7 +14,7 @@ Since I only own one SteelSeries mouse, this list isn't really a list yet. But w
 
 | Name | Supported since (ver) | Contributor | Website |
 | ---- | --- | --- | --- |
-| SteelSeries Aeorx 9 WL | Development | EndlessWaey | [Link](https://steelseries.com/de-de/gaming-mice/aerox-9?color=black) |   
+| SteelSeries Aerox 9 WL | Development | EndlessWaey | [Link](https://steelseries.com/de-de/gaming-mice/aerox-9?color=black) |   
 
 # Usage Example (Development only)
 
