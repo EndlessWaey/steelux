@@ -5,6 +5,7 @@ from dataclasses import dataclass
 from typing import Optional
 import os
 import subprocess
+import getpass
 
 @dataclass(frozen=True)
 class USBDeviceConfig:

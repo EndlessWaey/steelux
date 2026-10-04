@@ -3,6 +3,8 @@ import usb.core
 import usb.util
 from dataclasses import dataclass
 from typing import Optional
+import os
+import subprocess
 
 @dataclass(frozen=True)
 class USBDeviceConfig:
@@ -32,9 +34,15 @@ class SteelSeriesMouse(object):
         self.dpi_interface= config.dpi_interface
         self.max_dpi = config.max_dpi
         self.args = cli_args
-
+        
         print(f"Created an instance object for {self.name}")
-    
+        
+        # Set permission to the character device
+        passw = getpass.getpass("Enter your sudo password: ")
+        cmd = ["sudo", "-S", "chown", "root:$USER", "$(lsusb", "|", "grep", "1038:1858", "|", "awk", "'{print "/dev/bus/usb/"$2"/"$4}'", "|", "sed", "'s/://g')"]
+        subprocess.run(cmd,input=passw)
+        exit(0)
+
     def _claim_mouse(self):
         '''Claims the mouse character device for the executing user'''
         pass

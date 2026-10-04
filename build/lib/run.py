@@ -1,6 +1,8 @@
 import steelux.mice
 import steelux.utils
 import argparse
+import os
+import subprocess
 
 def parse_args():
     '''Parse the CLI Arguments and options passed with SteeLux'''
