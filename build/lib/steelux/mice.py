@@ -5,6 +5,7 @@ from dataclasses import dataclass
 from typing import Optional
 import os
 import subprocess
+import getpass
 
 @dataclass(frozen=True)
 class USBDeviceConfig:
@@ -36,10 +37,17 @@ class SteelSeriesMouse(object):
         self.args = cli_args
         
         print(f"Created an instance object for {self.name}")
-        
+        subprocess.run(["lsusb", "-d", "1038:1858"], capture_output=True)
+        # Check the permission on mouse character Device
+        '''subprocess.run(
+            ["lsusb", "-d", f"{self.vendor_id}:{self.product_id}"],
+            capture_output=True,
+            text=True
+        )'''
+        #print(lsusb_output.stdout)
+        exit(0)
         # Set permission to the character device
         passw = getpass.getpass("Enter your sudo password: ")
-        cmd = ["sudo", "-S", "chown", "root:$USER", "$(lsusb", "|", "grep", "1038:1858", "|", "awk", "'{print "/dev/bus/usb/"$2"/"$4}'", "|", "sed", "'s/://g')"]
         subprocess.run(cmd,input=passw)
         exit(0)
 

@@ -36,13 +36,24 @@ class SteelSeriesMouse(object):
         self.max_dpi = config.max_dpi
         self.args = cli_args
         
-        print(f"Created an instance object for {self.name}")
-        
-        # Set permission to the character device
-        passw = getpass.getpass("Enter your sudo password: ")
-        cmd = ["sudo", "-S", "chown", "root:$USER", "$(lsusb", "|", "grep", "1038:1858", "|", "awk", "'{print "/dev/bus/usb/"$2"/"$4}'", "|", "sed", "'s/://g')"]
-        subprocess.run(cmd,input=passw)
-        exit(0)
+        # TODO: Should probably be in utils.py, also **extremely** hacky
+        lsusb_output = subprocess.run(["lsusb", "-d" f"{self.vendor_id:x}:{self.product_id:x}"],
+            capture_output=True,
+            text=True
+        )
+        mouse_bus = lsusb_output.stdout.split()[1]
+        mouse_port = lsusb_output.stdout.split()[3][:-1]
+        print(f"Bus: {mouse_bus}, Port: {mouse_port}")
+        mouse_path = f"/dev/bus/usb/{mouse_bus}/{mouse_port}"
+
+        # Check if we have permissions on device
+        if os.access(mouse_path, os.W_OK):
+            print("Write permissions already established...")
+        else: # TODO: Add a loop for wrong password, sanity check?
+            passw = getpass.getpass("Enter your sudo password: ")
+            username = getpass.getuser()
+            cmd = ["sudo", "-S", "chown", f"root:{username}", mouse_path]
+            subprocess.run(cmd,input=passw.encode())
 
     def _claim_mouse(self):
         '''Claims the mouse character device for the executing user'''
